@@ -52,6 +52,23 @@ int len(struct node **head)//returns the length of the list
     return c;
 }
 
+void athead(struct node **head,int x) //shifts the head for every new node attached
+{
+    struct node *newnode;
+    newnode = (struct node*)malloc(sizeof(struct node));
+    newnode->data = x;
+    newnode->next = NULL;
+    if((*head)==NULL)
+    {
+        *head = newnode;
+    }
+    else
+    {
+        newnode->next = (*head);
+        (*head) = newnode;
+    }
+}
+
 /*Here we will use array convention for position index.. that is index=0 for head and n-1 for nth element*/
 void insertatpos(struct node **head,int x,int pos)
 {
@@ -62,6 +79,10 @@ void insertatpos(struct node **head,int x,int pos)
     if((*head)==NULL)
     {
         append(&(*head),x);
+    }
+    else if(pos==0)
+    {
+        athead(&(*head),x);
     }
     else if(pos<=l)
     {
@@ -83,11 +104,20 @@ void insertatpos(struct node **head,int x,int pos)
 int main()
 {
     struct node *head = NULL; //Set to null as append would assign the rest of the nodes... at the end
-    int n = 5;
+    int n = 5,x,pos;
     for(int i=1;i<=n;i++)
     {
-        append(&head,i);
+        append(&head,i); //can be any... using scanf too..
     }
     print(&head);
+    printf("Enter no of elements to Insert \n");
+    scanf("%d",&n);
+    for(int i=1;i<n;i++)
+    {
+        scanf("%d",&x);
+        scanf("%d",&pos);
+        insertatpos(&head,x,pos);
+        print(&head);
+    }
     return 0;
 }
