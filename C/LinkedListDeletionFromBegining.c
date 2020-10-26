@@ -63,7 +63,7 @@ int main()
         append(&head,i); //can be any... using scanf too..
     }
     print(&head);
-    printf("Enter no of elements to Delete from... \n");
+    printf("Enter no of elements to Delete from Begining... \n");
     scanf("%d",&n);
     for(int i=0;i<n;i++)
     {
