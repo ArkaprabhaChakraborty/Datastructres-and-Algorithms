@@ -43,7 +43,7 @@ We then print each  on a new line.
 
 
 def merge_the_tools(string, k):
-    u = [string[i:i+k] for i in range(0,len(string),k)]
+    u = [string[i:i+k] for i in range(0,len(string),k)] #splitting string at the specified intervals
     for j in u:
         s = set()
         x = ""
