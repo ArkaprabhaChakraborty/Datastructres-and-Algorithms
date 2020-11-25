@@ -30,9 +30,63 @@ void append(struct node **head,int x)
     }
 }
 
+void print(struct node **head)
+{
+    struct node *temp = *head;
+    while(temp->next!=(*head))
+    {
+        printf("%d ",temp->data);
+        temp = temp->next;
+    }
+    printf("%d",temp->data);
+}
+
+void insert(struct node **head,int pos,int x)
+{
+    struct node *temp = *head;
+    struct node *newnode = (struct node*)malloc(sizeof(struct node));
+    newnode->data = x;
+    if((*head)==NULL)
+    {
+        if(pos == 0)
+        {
+            append(&(*head),x);
+        }
+        else
+        {
+            printf("wrong position value \n");
+        }
+    }
+    else
+    {
+        for(int i=0;i<pos;i++)
+        {
+            temp = temp->next;
+        }
+        newnode->next = temp->next->next;
+        temp->next = newnode;
+    }
+}
+void delend(struct node **head)
+{
+    struct node *temp = *head, *x;
+    while (temp->next->next != NULL)
+    {
+        temp = temp->next;
+    }
+    x = temp->next;
+    temp->next = temp->next->next;
+    free(x);
+}
+
+void delete(struct node **head, int pos)
+{
+
+}
 int main()
 {
     struct node *head = NULL;
     append(&head,1);
+    print(&head);
     return 0; 
 }
