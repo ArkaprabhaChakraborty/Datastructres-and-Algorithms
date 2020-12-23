@@ -63,7 +63,7 @@ void insert(struct node **head,int pos,int x)
         {
             temp = temp->next;
         }
-        newnode->next = temp->next->next;
+        newnode->next = temp->next;
         temp->next = newnode;
     }
 }
@@ -86,7 +86,11 @@ void delete(struct node **head, int pos)
 int main()
 {
     struct node *head = NULL;
-    append(&head,1);
+    for(int i = 0;i<10;i++)
+    {
+        append(&head,i);
+    }
+    insert(&head,9,15);
     print(&head);
     return 0; 
 }
