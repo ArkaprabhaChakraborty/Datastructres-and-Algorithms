@@ -25,7 +25,7 @@ int partition(int a[], int j, int r)
         j++; //increment j till pivot-1 as we want to position pivot element
     }
     /*At this stage i either lags behind or is equal to j
-    The position where i is now is the actual position where the pivot element should be...
+    The position where (i+1) is now is the actual position where the pivot element should be...
     So we swap them.. */
     temp = a[i+1]; 
     a[i+1] = a[pivot];

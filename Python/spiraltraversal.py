@@ -17,9 +17,9 @@ while k < m and l < n:
         print(r[i][n-1],end = " ")
     n = n - 1
     if k < m:
-            for i in range(n - 1, (l - 1), -1): 
-                print(r[m - 1][i], end=" ") 
-            m -= 1
+        for i in range(n - 1, (l - 1), -1): 
+            print(r[m - 1][i], end=" ") 
+        m -= 1
     if l < n:
         for i in range(m-1,k-1,-1):
             print(r[i][l],end = " ")

@@ -29,7 +29,7 @@ struct stack *create(int x)
     struct stack *s = (struct stack*)malloc(sizeof(struct stack));
     s->capacity = x;
     s->top = -1;
-    s->arr = (struct node**)malloc(x * sizeof(struct node*));
+    s->arr = (struct node**)malloc(x * sizeof(struct node));
     return s;
 } 
 
