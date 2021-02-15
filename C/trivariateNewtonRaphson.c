@@ -88,14 +88,15 @@ int main()
         jacobian(j,x[0],x[1],x[2]);
         inverse(j);
         matmul(j,f,t);
-        for(int j=0;j<3;j++)
+        for(int k=0;k<3;k++)
         {
-            x[j] = x[j] - (alpha * t[j]);
+            x[k] = x[k] - (alpha * t[k]);
         }
-    }
-    for(int i=0;i<3;i++)
-    {
-        printf("%f \n",x[i]);
+        
+        for(int l=0;l<3;l++)
+        {
+            printf("%f \n",x[l]);
+        }
     }
     return 0;
 }
