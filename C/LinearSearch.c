@@ -28,7 +28,7 @@ int main()
     }
     printf("Enter key to be searched: ");
     scanf("%d",&k);
-    k = binarySearch(arr,0,n,k);
+    k = LinearSearch(arr,n,k);
     if(k!=-1)
     {
         printf("element found at position %d",k);
