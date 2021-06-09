@@ -47,6 +47,18 @@ def area(x1,y1,x2,y2,x3,y3):
     else:
         return 0
 
+def Hull(X,Y,px1,py1,px2,py2):
+    max = 0
+    p,q = 0,0
+    for k in range(len(X)):
+        i = X[k]
+        j = Y[k]
+        a = area(px1,py1,px2,py2,i,j)
+        if (max<a):
+            max = a
+            p = i
+            q = j
+    return (p,q)
 
 def QuickHull(x,y,px1,py1,px2,py2):
     if(len(x)<3):
@@ -58,7 +70,7 @@ def QuickHull(x,y,px1,py1,px2,py2):
     global hullset
     for k in range(len(x)):
         i = x[k]
-        j = y[k]
+        j = y[k] 
         d = det(i,j,px1,py1,px2,py2)
         if (d>0):
             Xx1.append(i)
@@ -76,27 +88,14 @@ def QuickHull(x,y,px1,py1,px2,py2):
     QuickHull(Xx2,Yy2,px1,py1,p2,q2)
 
 
-def Hull(X,Y,px1,py1,px2,py2):
-    max = 0
-    p,q = 0,0
-    for k in range(len(X)):
-        i = X[k]
-        j = Y[k]
-        a = area(px1,py1,px2,py2,i,j)
-        if (max<a):
-            max = a
-            p = i
-            q = j
-    return (p,q)
-    #QuickHull(X,Y,px1,py1,p,q)
+x = []
+y = []
+n = int(input("Enter number of points: "))
+for i in range(n):
+    a,b = map(int,input().split())
+    x.append(a)
+    y.append(b)
 
-
-
-x = [0,1,2,4,0,1,3,3]
-y = [3,1,2,4,0,2,1,3]
-
-qsort(x,y,0,7)
-print(x)
-print(y)
+qsort(x,y,0,len(x)-1)
 QuickHull(x,y,x[0],y[0],x[-1],y[-1])
 print(hullset)

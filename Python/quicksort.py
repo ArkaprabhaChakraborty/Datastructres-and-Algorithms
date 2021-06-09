@@ -18,7 +18,7 @@ def partition(a,l,r):
             temp = a[i] 
             a[i] = a[l]
             a[l] = temp 
-        #increment j till pivot-1 as we want to position pivot element
+        #increment l till pivot-1 as we want to position pivot element
         l = l + 1
     temp = a[i+1]
     a[i+1] = a[pivot]
