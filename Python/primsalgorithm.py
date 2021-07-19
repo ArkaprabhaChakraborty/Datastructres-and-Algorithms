@@ -1,5 +1,4 @@
 
-import sys
 class Graph:
     def __init__(self,v):
         self.vertices = v
@@ -23,7 +22,7 @@ class Graph:
         keys = [100000000000]*(self.vertices)
         keys[0] = 0
         parent = [0]*self.vertices
-        parent[0] = -1  
+        parent.insert(0,-1)  
         for cout in range(self.vertices):
             u = self.minweight(keys, mst)
             mst[u] = True
