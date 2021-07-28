@@ -15,7 +15,7 @@ def get_min(s,n,graph,cost):
     return min_vert
 
 
-def multistage_shortest_path(graph,n,stage):
+def multistage_shortest_path_forward_approach(graph,n,stage):
     d = [0]*n
     cost = [0]*n
     for i in range(n-2,-1,-1):
@@ -49,5 +49,5 @@ graph = [[INF,  1,   2,  5,   INF, INF, INF, INF],
          [INF, INF, INF, INF, INF, INF, INF, 13],
          [INF, INF, INF, INF, INF, INF, INF, 2]]
           
-multistage_shortest_path(graph,8,4)
+multistage_shortest_path_forward_approach(graph,8,4)
 
