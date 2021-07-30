@@ -8,7 +8,7 @@ def Bellman_Ford_Calculate(W_edgelist,n,v):
     d = [INF] * n
     d[v]=  0
     p = [-1]*n
-    for i in range(n):
+    for i in range(n-1):
         for j in range(len(W_edgelist)):
             x,y,w  = W_edgelist[j]
             if(d[x]<INF):
