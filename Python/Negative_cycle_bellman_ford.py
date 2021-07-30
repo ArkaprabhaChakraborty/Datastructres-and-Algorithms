@@ -46,8 +46,8 @@ def negative_cycle(graph,n,v):
     for i in range(len(graph)):
         x,y,w = graph[i]
         if(d[x]<INF):
-                if(d[y] > (d[x]+ w)):
-                    c = y
+            if(d[y] > (d[x]+ w)):
+                c = y
     if c !=-1:
         for i in range(n):
             c = p[c]
