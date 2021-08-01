@@ -11,9 +11,8 @@ struct queue //queue-struct... required for fifo movement
     struct node *front;
     struct node *rear;
 };
-//Basically this queue struct has two node pointers.
-/* 1)front: pointing to the first node of the Linked list
-   2)rear: pointing to the last node of the Linked list */ 
+
+
 struct queue *createqueue() //utility function allocating memory for the front and rear structure pointer
 {
     struct queue *q = (struct queue*)malloc(sizeof(struct queue));
@@ -107,6 +106,10 @@ void enter_edge(int graph[100][100],int a,int b)
     graph[b][a] = 1;
 }
 
+void enter_directed_edge(int graph[100][100],int a,int b)
+{
+    graph[a][b] = 1;
+}
 
 
 void BFS(int n,int u, int graph[100][100])
