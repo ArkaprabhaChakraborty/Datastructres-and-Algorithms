@@ -27,7 +27,7 @@ void enqueue(struct queue **q,int k) // k will be inserted to the queue using a 
     newnode = (struct node*)malloc(sizeof(struct node));
     newnode->data = k;
     newnode->next = NULL;
-    if((*q)->rear == NULL)
+    if((*q)->rear == NULL || (*q)->front == NULL)
     {
         (*q)->front = (*q)->rear = newnode;
         return;
