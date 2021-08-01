@@ -1,25 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-
-int find(int parent[100],int a)
-{
-    while(parent[a]!=a)
-    {
-        a = parent[a];
-    }
-    return a;
-}
-
-
-void union_find(int parent[100],int a, int b)
-{
-    int i,j;
-    i = find(parent,a);
-    j = find(parent,b);
-    parent[i] = j;
-}
-
 
 void print_graph(int n,int graph[100][100])
 {
@@ -33,6 +12,7 @@ void print_graph(int n,int graph[100][100])
         printf("\n");
     }
 }
+
 
 
 void create_graph(int n, int graph[100][100])
@@ -69,41 +49,50 @@ void enter_directed_weighted_edge(int graph[100][100],int a,int b,int w)
     graph[a][b] = w;
 }
 
-
-void KruskalMST(int graph[100][100],int n)
+int minweight(int key[100],int mst[100],int n)
 {
-    int min_cost = 0;
-    int edgecount = 0;
-    int parent[n];
-    int min,a,b;
-    for(int i=0;i<n;i++)
+    int min  = 100000000;
+    int minindex = -1;
+    for(int i =0;i<n;i++)
     {
-        parent[i] = i;
-    }
-    while(edgecount<n-1)
-    {
-        min = 100000;
-        a = -1;
-        b = -1;
-        for(int i=0;i<n;i++)
+        if(key[i]< min && mst[i] == 0)
         {
-            for(int j=0;j<n;j++)
-            {
-                if(find(parent,i) != find(parent,j) && graph[i][j]<min && graph[i][j]!=0)
-                {
-                    min = graph[i][j];
-                    a = i;
-                    b = j;
-                }
-            }
+            min = key[i];
+            minindex = i;
         }
-        union_find(parent,a,b);
-        printf("Edge %d:(%d, %d) cost: %d \n",edgecount, a, b, min);
-        edgecount =edgecount+ 1;
-        min_cost = min_cost + min;
     }
-    printf("\nMinimum cost: %d \n",min_cost);
+    return minindex;
 }
+
+void PrimsMST(int graph[100][100],int n)
+{
+   int mst[100],keys[100],parent[110];
+   for(int t = 0;t<n;t++)
+   {
+       keys[t] = 100000000;
+   }
+   int u;
+   parent[0] = -1;
+   for(int k=0;k<n;k++)
+   {
+       u = minweight(keys,mst,n);
+       mst[u] = 1;
+       for(int v = 0;v<n;v++)
+       {
+           if(graph[u][v]>0 && mst[v]==0 && keys[v]>graph[u][v])
+           {
+               keys[v] = graph[u][v];
+               parent[v] = u;
+           }
+       }
+   }
+   for(int i = 0;i<n;i++)
+   {
+       printf("%d --> %d -- %d \n",parent[i],i,graph[i][parent[i]]);
+   }
+   printf("\n"); 
+}
+
 
 int main()
 {
@@ -122,11 +111,10 @@ int main()
         {
             break;
         }
-        graph[u][v] = w;       
+        enter_weighted_undirected_edge(graph,u,v,w);       
     }
     print_graph(n,graph);
-    int s = 0;
-    printf("MST(kruskal's Algorithm) for the graph is \n");
-    KruskalMST(graph,n);
+    printf("MST(Prim's Algorithm) for the graph is \n");
+    PrimsMST(graph,n);
     return 0;
 }
