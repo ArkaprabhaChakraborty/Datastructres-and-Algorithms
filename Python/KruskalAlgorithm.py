@@ -36,7 +36,7 @@ class Graph:
             edge_count += 1
             mincost += min
         print("Minimum cost= {}".format(mincost))
-    
+
     def print_graph(self):
         for i in self.graph:
             print(i)
