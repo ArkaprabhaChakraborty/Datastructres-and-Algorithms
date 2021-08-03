@@ -11,12 +11,6 @@ def isSafe(x, y, board):
     return False
  
  
-def printSolution(n, board):
-    for i in range(n):
-        for j in range(n):
-            print(board[i][j], end=' ')
-        print()
- 
  
 def solveKT(n):
     board = [[-1 for i in range(n)]for i in range(n)]
@@ -30,7 +24,8 @@ def solveKT(n):
     if(not solveKTUtil(n, board, 0, 0, move_x, move_y, pos)):
         print("Solution does not exist")
     else:
-        printSolution(n, board)
+        for i in board:
+            print(i)
  
  
 def solveKTUtil(n, board, curr_x, curr_y, move_x, move_y, pos):
